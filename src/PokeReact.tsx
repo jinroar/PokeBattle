@@ -1,9 +1,12 @@
 import { useState } from "react";
 import PinkButton from "./components/PinkButton";
 import { Pokemon } from "./interfaces/Pokemon";
+import AudioPlayer from "react-audio-player"
+import './index.css';
+import FightButton from "./components/FightButton";
 
+function PokeReact  () {
 
-const PokeReact = () => {
   const [pokemonName1, setPokemonName1] = useState<string>("");
   const [pokemonName2, setPokemonName2] = useState<string>("");
   const [pokemon1Data, setPOkemon1Data] = useState<Pokemon | null>(null);
@@ -36,51 +39,66 @@ const PokeReact = () => {
     setPkmn2Hp(pkmn2Hp);
     setHasFightResults(true);
   }
+
+  const [showHideButton, setShowHideButton] = useState(false);
+
+  const handleClick = () => {
+    setShowHideButton(true);
+  };
+
   return (
-    <div style={{
-      display: "flex"
-    }}>
-      <div>
-        {
+      <div className="image-container">
+      {
           pokemon1Data && 
-          <div>
-            <img src={pokemon1Data.sprites.front_default}/>
+          <div className="box1">
+            <img className="gif" src={pokemon1Data.sprites.other.showdown.front_default}/>
             <p>
               Name: {pokemon1Data?.name} <br/>
               HP: {pokemon1Data.stats.find(e=>e.stat.name==="hp")?.base_stat} <br/>
               Attack: {pokemon1Data.stats.find(e=>e.stat.name==="attack")?.base_stat} <br/>
-              DEfense: {pokemon1Data.stats.find(e=>e.stat.name==="defense")?.base_stat} <br/>
+              Defense: {pokemon1Data.stats.find(e=>e.stat.name==="defense")?.base_stat} <br/>
+            <AudioPlayer src={pokemon1Data.cries.latest} controls volume={0.5} onPlay={() => console.log('Playing')} onPause={() => console.log('Paused')}/>
             </p>
+            
           </div>
         }
-        <input type="" placeholder="Pokemon" value={pokemonName1} onChange={(e)=>setPokemonName1(e.target.value)}/>
-        <PinkButton  buttonClick={selectPokemon} label="Select Pokemon"/>
-      </div>
-      <div>
         {
           pokemon2Data && 
-          <div>
-            <img src={pokemon2Data.sprites.front_default}/>
+          <div className="box2">
+            <img className="gif" src={pokemon2Data.sprites.other.showdown.front_default}/>
             <p>
               Name: {pokemon2Data?.name} <br/>
               HP: {pokemon2Data.stats.find(e=>e.stat.name==="hp")?.base_stat} <br/>
               Attack: {pokemon2Data.stats.find(e=>e.stat.name==="attack")?.base_stat} <br/>
-              DEfense: {pokemon2Data.stats.find(e=>e.stat.name==="defense")?.base_stat} <br/>
+              Defense: {pokemon2Data.stats.find(e=>e.stat.name==="defense")?.base_stat} <br/>
+              <AudioPlayer src={pokemon2Data.cries.latest} controls volume={0.5} onPlay={() => console.log('Playing')} onPause={() => console.log('Paused')}/>
             </p>
+           
           </div>
         }
-        <input type="" placeholder="Pokemon" value={pokemonName2} onChange={(e)=>setPokemonName2(e.target.value)}/>
-        <PinkButton  buttonClick={selectPokemon2} label="Select Pokemon"/>
 
+        
+     <div className="box3">
+      <input className="tbox" type="" placeholder="Pokemon" value={pokemonName1} onChange={(e)=>setPokemonName1(e.target.value)}/>
+      <PinkButton  buttonClick={() => {selectPokemon(); handleClick(); }} label="Select Pokemon"/><br/>
+      <input className="tbox" type="" placeholder="Pokemon" value={pokemonName2} onChange={(e)=>setPokemonName2(e.target.value)}/>
+      <PinkButton  buttonClick={selectPokemon2} label="Select Pokemon"/> 
       </div>
-      <PinkButton buttonClick={fight} label={"Payt!"} />
-      {hasFightResults && (
-        <div>
-          {pokemon1Data?.name}: {pkmn1Hp} vs 
-          {pokemon2Data?.name}: {pkmn2Hp}
+   
+     
+      {showHideButton ? (
+         <div className="box4">
+        <FightButton buttonClick={fight} label={"Payt!"} /> 
         </div>
-      )}
+      ) : null}
+
+      <div className="box5">
+      {hasFightResults && ( <p> 🔥 {pokemon1Data?.name}: {pkmn1Hp} vs {pokemon2Data?.name}: {pkmn2Hp} 🔥</p> )}
+      </div>
+      
+      
     </div>
+
   )
 }
 

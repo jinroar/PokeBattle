@@ -22,17 +22,88 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+body {  background-image: url('https://wallpaperaccess.com/full/8406757.gif');overflow: hidden;
+  height: 100vh;}
+p  { font-size: 24px; background-color: rgba(218, 247, 166, 0.6); text-align: center;  border-radius: 25px; }
+h1 { background-color: rgba(255, 255, 255, 0.7); text-align: center;  border-radius: 25px;  }
+h2 { background-color: rgba(255, 255, 255, 0.5); padding: 10px;  border-radius: 25px;}
+.image-container { display: flex; justify-content: space-between; /* or space-around, or center */}
+
+.gif{
+   height: 50%;
+   width:  50%;
 }
+
+.box1{
+  position: left;
+  margin: 300px; border: 1px solid #4CAF50; 
+  text-align: center; 
+  background-color: rgba(168, 241, 240, 0.2); 
+  padding: 30px;
+}
+
+.box2{
+  position: relative;
+  margin: 300px; border: 1px solid #ffbafc; 
+  text-align: center; 
+  background-color: rgba(255, 142, 185, 0.3);
+  padding: 30px;
+}
+
+.box3{
+  position: absolute;
+  margin: 30px; border: 1px solid #4CAF50; 
+  text-align: center; 
+  background-color: rgba(255, 194, 165 , 0.5); 
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.tbox{
+  position: relative;
+  margin: 7px; border: 1px solid #4CAF50; 
+  text-align: center; 
+  background-color: rgba(255, 194, 165 , 0.5); 
+  padding: 20px;
+}
+
+.box4{
+  position: absolute;
+  top: 550px; /* 50px from the top of its nearest positioned ancestor */
+  left: 813px; /* 30px from the left of its nearest positioned ancestor */
+  margin: 60px; border: 1px solid #b8da21; 
+  text-align: center; 
+  background-color: rgba(21, 153, 230, 0.24); 
+  padding: 10px;
+}
+
+.box5{
+  position: absolute;
+  top: 390px; /* 50px from the top of its nearest positioned ancestor */
+  left: 720px; /* 30px from the left of its nearest positioned ancestor */
+  margin: 60px; border: 1px solid #b8da21; 
+  text-align: center; 
+  background-color: rgba(21, 153, 230, 0.24); 
+  padding: 10px;
+}
+
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+img{
+  height: 80%;
+  width: 50%;
+}
+
+divBox{
+  margin: 700px; 
+  border: 1px solid #4CAF50; 
+  text-align: center;
+   background-color: rgba(20, 67, 66, 0.5);
+    padding: 10px;
 }
 
 button {
