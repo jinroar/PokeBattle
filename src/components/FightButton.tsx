@@ -1,21 +1,20 @@
 
 
 const FightButton = ({
-    buttonClick,
-    label
-  }) => {
-    return (
-      <button 
-        style={{
-          color: "red",
-          fontSize: 24,
-          padding: 50
-        }}
-        onClick={buttonClick}
-      >
-        {label}  
-      </button>
-    )
-  }
-  
-  export default FightButton;
+  buttonClick,
+  label
+}) => {
+  return (
+    <button className="btn"
+      style={{
+        color: "yellow",
+        fontSize: 24
+      }}
+      onClick={buttonClick}
+    >
+      {label}  
+    </button>
+  )
+}
+
+export default FightButton;

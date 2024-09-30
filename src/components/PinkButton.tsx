@@ -1,20 +1,19 @@
-
-
 const PinkButton = ({
   buttonClick,
   label
 }) => {
   return (
-    <button 
+    <button className="btn-grad"
       style={{
-        color: "pink",
+        color: "white",
         fontSize: 24
       }}
       onClick={buttonClick}
     >
       {label}  
     </button>
+
   )
 }
-
 export default PinkButton;
+
